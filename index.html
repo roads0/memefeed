@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="superagent.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <div>
+      <img id="meme" src=""/>
+    </div>
+  </body>
+  <script>
+  function memeFetch() {
+  superagent.get("http://localhost:3000/memefeed")
+    .end((err,res) => {
+      document.getElementById("meme").src = `${res.body.preview.images[0].source.url}`
+      console.log(`${res.body.preview.images[0].source.url}`)
+    })
+  }
+
+  memeFetch()
+  </script>
+</html>
